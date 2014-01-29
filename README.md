@@ -1,7 +1,19 @@
 controulr
 =========
 
-fun and simple little framework for creating controls in the browser
+fun and simple little framework for creating controls in the browser.
+
+very much still in development.
+controulr.js todo:
+	support custom row/column via parameters.
+	make the buttons look nicer.
+	support gestures.js
+	support joystick.js
+	
+editor todo:	
+	support more than just adding buttons.
+	support resizing elements
+	support printing out custom row/column
 
 all parameters in each object are optional.
 
