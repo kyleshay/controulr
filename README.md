@@ -2,20 +2,20 @@ Controulr.js usage
 =========
 
 ## Todo list (very much still in development)
-#### controulr.js todo:
+#### Controulr.js todo:
 	- support custom row/column via parameters.
 	- make the buttons look nicer.
 	- support gestures.js
 	- support joystick.js
 	
-#### editor todo:	
+#### Editor todo:	
 	- support more than just adding buttons.
 	- support resizing elements
 	- support printing out custom row/column
 
 ## Usage:
-all parameters in each object are optional.
-```
+All parameters in each object are optional.
+```javascript
 var controller = document.getElementById('controller');
 var mycontrol = new Controller(controller, {supportclick: false});
 ```
@@ -70,7 +70,7 @@ You may optinally generate the controller using the editor, copy the output in t
 <body>
 	<div id="controller"></div>
 	<script type="text/javascript" >
-	  ******* paste code here ******* 
+	  <!--******* paste print.js code here *******-->
 	</script>
 </body>
 </html>
@@ -92,6 +92,6 @@ var control = new EZController(document.getElementById('controller'), {
         },
     },
 }, {
-    supportmouse: false
+    supportmouse: true
 });
 ```
