@@ -53,7 +53,7 @@ you may optinally generate the controller using the editor, copy the output in t
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<script type="text/javascript" src='https://raw.github.com/kyleshay/controulr/master/controul.min.js'></script>
+	<script type="text/javascript" src='http://rawgithub.com/kyleshay/controulr/master/controul.min.js'></script>
 </head>
 <body>
 	<div id="controller"></div>
