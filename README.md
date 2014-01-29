@@ -52,13 +52,8 @@ you may optinally generate the controller using the editor, copy the output in t
 	<title>controller</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="style.css">
 
-	<script type="text/javascript" src='../src/controls.js'></script>
-	<script type="text/javascript" src='../src/controls/touchpad.js'></script>
-	<script type="text/javascript" src='../src/controls/button.js'></script>
-	<script type="text/javascript" src='../src/controls/joystick.js'></script>
+	<script type="text/javascript" src='https://raw.github.com/kyleshay/controulr/master/controul.min.js'></script>
 </head>
 <body>
 	<div id="controller"></div>
