@@ -1,4 +1,4 @@
-Controulr.js usage
+Controulr.js
 =========
 
 ## Todo list (very much still in development)
@@ -52,7 +52,7 @@ var buttoncontrolstart = new Controller.Button({
 mycontrol.add(buttoncontrolstart);
 ```
 
-Editor usage
+Controulr Editor
 ========
 
 ## Setup
