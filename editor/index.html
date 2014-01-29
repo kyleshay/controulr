@@ -1,0 +1,53 @@
+<html ng-app='createApp'>
+<head>
+	<title></title>
+	<script type="text/javascript" src='angular.min.js'></script>
+	<script type="text/javascript" src='app.js'></script>
+	<script type="text/javascript" src='controllers.js'></script>
+</head>
+<body ng-controller='AppCtrl'>
+	Rows: <input type="text" ng-model="rowcount" ng-keyup="updateGrid()" placeholder="Number of rows">
+	Columns: <input type="text" ng-model="colcount" ng-keyup="updateGrid()" placeholder="Number of columns">
+	<input type="button" ng-click="addButton()" value="Add a button">
+	<input type="button" ng-click="print=true" value="print.js">
+
+	<div ng-show="editBox" style="position:absolute;right:0;top:0;background-color:cyan;z-index: 1000">
+		<form ng-submit="saveEdit()">
+			Text: <input type="text" ng-model="editText" placeholder="Button text"><br>
+			Color: <input type="text" ng-model="editColor" placeholder="Button color"><br>
+			<input class="btn-primary" type="submit" value="save">
+		</form>
+	</div>
+
+	<div ng-show="print" style="position:absolute;padding:5;left:0;top:25%;background-color:cyan;z-index: 1000">
+var EZController = EZController || {}; EZController = function(element, a, o) {
+		<div ng-repeat="control in controls">
+var buttoncontrol{{control.name}} = new Controller.Button({
+text: '{{control.name}}',
+color: '{{control.style['background-color']}}',
+position: {top: {{control.grid.top}}, left: {{control.grid.left}}},
+start: function(e) { a.button_{{control.name}}.start && a.button_{{control.name}}.start(e) },
+end: function(e) { a.button_{{control.name}}.end && a.button_{{control.name}}.end(e) }});
+		</div>
+var control = new Controller(element, o);
+		<span ng-repeat="control in controls">
+control.add(buttoncontrol{{control.name}});
+		</span>
+this.control = control;}
+		</br></br></br>
+		<p>
+		var control = new EZController(document.getElementById('controller'), {
+			<span ng-repeat="control in controls">
+			'{{control.name}}': {
+				start: function() { console.log('{{control.name}}_start') },
+				end: function() { console.log('{{control.name}}_end') },
+				move: function() { console.log('{{control.name}}_move') },
+			},
+			</span>			
+	}, {supportmouse: false});
+		</p>
+		</br></br></br>
+		<input type="button" ng-click="print=false" value="close" />
+	</div>
+</body>
+</html>
