@@ -5,17 +5,15 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style.css">
-
-	<script type="text/javascript" src='../src/controls.js'></script>
-	<script type="text/javascript" src='../src/controls/touchpad.js'></script>
-	<script type="text/javascript" src='../src/controls/button.js'></script>
-	<script type="text/javascript" src='../src/controls/joystick.js'></script>
+	
+	<style>.active { box-shadow: inset 1px 1px 1px #222 !important; }</style>
+	<script type="text/javascript" src='http://rawgithub.com/kyleshay/controulr/master/controul.min.js'></script>
 </head>
 <body>
 	<div id="controller"></div>
 	<script type="text/javascript" >
 var EZController = EZController || {}; EZController = function(element, a, o) {
-var buttoncontrolstart_button = new Controller.Button({ text: 'start_button', color: 'grey', position: {top: 1, left: 6}, start: function(e) { a.button_start_button.start && a.button_start_button.start(e) }, end: function(e) { a.button_start_button.end && a.button_start_button.end(e) }});
+var buttoncontrolstart_button = new Controller.Button({ text: 'start_button', color: 'grey', position: {top: 1, left: 6}, size: {width: 3, height: 1}, start: function(e) { a.button_start_button.start && a.button_start_button.start(e) }, end: function(e) { a.button_start_button.end && a.button_start_button.end(e) }});
 var control = new Controller(element, o); control.add(buttoncontrolstart_button); this.control = control;} 
 
 
