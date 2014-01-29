@@ -16,8 +16,8 @@ Controulr.js usage
 ## Usage:
 all parameters in each object are optional.
 ```
-	var controller = document.getElementById('controller');
-	var mycontrol = new Controller(controller, {supportclick: false});
+var controller = document.getElementById('controller');
+var mycontrol = new Controller(controller, {supportclick: false});
 ```
 
 #### Create a multi-touch controller example:
