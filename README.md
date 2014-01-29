@@ -55,6 +55,8 @@ mycontrol.add(buttoncontrolstart);
 Controulr.js [Editor/Generator](http://kyleshay.github.io/controulr/editor/)
 ========
 
+Using the editor you should also use an emulator (firebug/chrome dev tools) to emulate the controller as other devices.
+
 ## Setup
 You may optinally generate the controller using the editor, copy the output in to this stub:
 ```html
