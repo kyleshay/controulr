@@ -1,29 +1,26 @@
-controulr
+Controulr.js usage
 =========
 
-fun and simple little framework for creating controls in the browser.
-
-very much still in development.
-h4. controulr.js todo:
+## Todo list (very much still in development)
+#### controulr.js todo:
 	- support custom row/column via parameters.
 	- make the buttons look nicer.
 	- support gestures.js
 	- support joystick.js
 	
-h4.editor todo:	
+#### editor todo:	
 	- support more than just adding buttons.
 	- support resizing elements
 	- support printing out custom row/column
 
+## Usage:
 all parameters in each object are optional.
-
-h2. Usage:
 ```
 	var controller = document.getElementById('controller');
 	var mycontrol = new Controller(controller, {supportclick: false});
 ```
 
-h4. create a multi-touch controller
+#### Create a multi-touch controller example:
 ```
   /** Setup Multi-Touch Controller  **/
 	var touchcontrol = new Controller.Touchpad({
@@ -39,7 +36,7 @@ h4. create a multi-touch controller
 	mycontrol.add(touchcontrol);
 ```
 
-h4. create a button example:
+#### Create a button controller example:
 ```javascript
 	/** Setup Button Controller **/
 	var buttoncontrolstart = new Controller.Button({
@@ -55,9 +52,11 @@ h4. create a button example:
 	mycontrol.add(buttoncontrolstart);
 ```
 
+Editor usage
 ========
 
-you may optinally generate the controller using the editor, copy the output in to this stub:
+## Setup
+You may optinally generate the controller using the editor, copy the output in to this stub:
 ```
 <html>
 <head>
@@ -77,7 +76,8 @@ you may optinally generate the controller using the editor, copy the output in t
 </html>
 ```
 
-to configure the event handlers for the generated code:
+## Configuration
+To configure the event handlers for the generated code:
 ```
 var control = new EZController(document.getElementById('controller'), {
     'start_button': {
