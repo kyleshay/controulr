@@ -52,7 +52,7 @@ var buttoncontrolstart = new Controller.Button({
 mycontrol.add(buttoncontrolstart);
 ```
 
-Controulr.js Editor/Generator
+Controulr.js [Editor/Generator](http://kyleshay.github.io/controulr/editor/)
 ========
 
 ## Setup
