@@ -4,26 +4,26 @@ controulr
 fun and simple little framework for creating controls in the browser.
 
 very much still in development.
-controulr.js todo:
-	support custom row/column via parameters.
-	make the buttons look nicer.
-	support gestures.js
-	support joystick.js
+h4. controulr.js todo:
+	- support custom row/column via parameters.
+	- make the buttons look nicer.
+	- support gestures.js
+	- support joystick.js
 	
-editor todo:	
-	support more than just adding buttons.
-	support resizing elements
-	support printing out custom row/column
+h4.editor todo:	
+	- support more than just adding buttons.
+	- support resizing elements
+	- support printing out custom row/column
 
 all parameters in each object are optional.
 
-to use:
+h2. Usage:
 ```
 	var controller = document.getElementById('controller');
 	var mycontrol = new Controller(controller, {supportclick: false});
 ```
 
-create a multi-touch controller
+h4. create a multi-touch controller
 ```
   /** Setup Multi-Touch Controller  **/
 	var touchcontrol = new Controller.Touchpad({
@@ -39,7 +39,7 @@ create a multi-touch controller
 	mycontrol.add(touchcontrol);
 ```
 
-create a button example:
+h4. create a button example:
 ```javascript
 	/** Setup Button Controller **/
 	var buttoncontrolstart = new Controller.Button({
@@ -55,7 +55,7 @@ create a button example:
 	mycontrol.add(buttoncontrolstart);
 ```
 
----
+========
 
 you may optinally generate the controller using the editor, copy the output in to this stub:
 ```
