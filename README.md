@@ -7,7 +7,7 @@ all parameters in each object are optional.
 
 to use:
 ```
-  var controller = document.getElementById('controller');
+	var controller = document.getElementById('controller');
 	var mycontrol = new Controller(controller, {supportclick: false});
 ```
 
@@ -53,6 +53,7 @@ you may optinally generate the controller using the editor, copy the output in t
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
 
+	<style>.active { box-shadow: inset 1px 1px 1px #222 !important; }</style>
 	<script type="text/javascript" src='http://rawgithub.com/kyleshay/controulr/master/controul.min.js'></script>
 </head>
 <body>
