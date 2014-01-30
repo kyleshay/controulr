@@ -118,6 +118,8 @@ function AppCtrl($scope) {
 		button.style.height = ratioH;
 		button.style.width = ratioW;
 		button.style.backgroundColor = 'red';
+		button.round = false;
+		button.key = '';
 		button.grid = {
 			top: 0,
 			left: 0
