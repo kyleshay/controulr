@@ -66,7 +66,7 @@ You may optinally generate the controller using the editor, copy the output in t
 	<meta name="mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" type="text/css" href="http://rawgithub.com/kyleshay/controulr/master/example/style.css">
 
-	<script type="text/javascript" src='http://rawgithub.com/kyleshay/controulr/master/controul.min.js'></script>
+	<script type="text/javascript" src='http://rawgithub.com/kyleshay/controulr/master/controulr.min.js'></script>
 </head>
 <body>
 	<div id="controller"></div>
