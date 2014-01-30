@@ -82,9 +82,9 @@ To configure the event handlers for the generated code:
 ```javascript
 var control = new EZController(document.getElementById('controller'), {
     'select': {
-        start: function () { console.log('select_start') },
-        end: function () { console.log('select_end') },
-        move: function () { console.log('select_move') },
+        start: function (e) { console.log('select_start', e) },
+        end: function (e) { console.log('select_end', e) },
+        move: function (e) { console.log('select_move', e) },
     },
 }, {
 	row: 10, column: 15, supportmouse: true

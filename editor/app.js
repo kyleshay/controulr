@@ -106,7 +106,7 @@ function AppCtrl($scope) {
 		buttonToEdit.key = $scope.editKey;
 		buttonToEdit.name = $scope.editText.replace(' ', '_');
 
-		$scope.editText = $scope.editColor = buttonToEdit = null;
+		$scope.editText = $scope.editColor = $scope.editRound = $scope.editKey = buttonToEdit = null;
 		$scope.editBox = false;
 	}
 
