@@ -1,4 +1,4 @@
-var Controller = Controller || {}
+var Controller = Controller || {};
 
 Controller.Joystick = function(o) {
 
@@ -9,12 +9,12 @@ Controller.Joystick = function(o) {
 	if(o.move) move = o.move;
 
 	element = document.createElement('div');
-	element.id = "button";
+	element.id = "joystick";
 	if(o.style) element.style = o.style;
 
 	var s = d = p = {
 		x: 0, y: 0
-	}
+	};
 
 	this.handle = function(e) {
 		switch(e.type) {
@@ -37,11 +37,11 @@ Controller.Joystick = function(o) {
 				end();
 				break;
 		}
-	}
+	};
 	this.direction = function() {
 		return 'up';
-	}
+	};
 	this.element = function() {
 		return element;
 	}
-}
+};

@@ -1,4 +1,4 @@
-var Controller = Controller || {}
+var Controller = Controller || {};
 
 Controller.Touchpad = function(o) {
 
@@ -17,7 +17,7 @@ Controller.Touchpad = function(o) {
 
 	var s = d = p = {
 		x: 0, y: 0
-	}
+	};
 	
 	this.handle = function(e) {
 		switch(e.type) {
@@ -43,20 +43,20 @@ Controller.Touchpad = function(o) {
 				end();
 				break;
 		}
-	}
+	};
 	this.touch = function() {
 		return {
 			x: p.x - d.x,
 			y: p.x - d.y			
 		}
-	}
+	};
 	this.element = function() {
 		return element;
-	}
+	};
 	this.position = function() {
 		return position;
-	}
+	};
 	this.size = function() {
 		return size;
 	}
-}
+};

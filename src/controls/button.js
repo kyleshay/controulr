@@ -1,4 +1,4 @@
-var Controller = Controller || {}
+var Controller = Controller || {};
 
 Controller.Button = function(o) {
 
@@ -13,33 +13,37 @@ Controller.Button = function(o) {
 
 	element = document.createElement('div');
 	element.id = "button" + o.text;
-	element.style.borderRadius = "100";
-	element.style.boxShadow = "1px 1px 1px #222";
-	element.style.textAlign = "center";
+	element.className = "button";
+	element.style.borderRadius = o.round ? "100px" : "";
 	element.style.backgroundColor = o.color || "";
 	element.innerText = o.text || 'x';
+	element.keyBind = (o.key || 'a').toUpperCase().charCodeAt(0);
 
 	this.handle = function(e) {
+		var target = e.keytarget || e.target;
 		switch(e.type) {
+			case 'keydown':
 			case 'mousedown':
 			case 'touchstart':
-				e.target.className = 'active';
+				if(target.className.indexOf('active') == -1) 
+					target.className += ' active';
 				start(e);
 				break;
+			case 'keyup':
 			case 'mouseup':
 			case 'touchend':
-				e.target.className = '';
+				target.className = target.className.replace(' active', '');
 				end(e);
 				break;
 		}
-	}
+	};
 	this.element = function() {
 		return element;
-	}
+	};
 	this.position = function() {
 		return position;		
-	}
+	};
 	this.size = function() {
 		return size;		
 	}
-}
+};

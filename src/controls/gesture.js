@@ -1,4 +1,4 @@
-var Controller = Controller || {}
+var Controller = Controller || {};
 
 Controller.Gesture = function(o) {
 
@@ -9,12 +9,12 @@ Controller.Gesture = function(o) {
 	if(o.move) move = o.move;	
 
 	element = document.createElement('div');
-	element.id = "touchpad";
+	element.id = "gesture";
 	if(o.style) element.style = o.style;
 
 	var s = d = p = {
 		x: 0, y: 0
-	}
+	};
 
 	this.handle = function(e) {
 		switch(e.type) {
@@ -37,14 +37,14 @@ Controller.Gesture = function(o) {
 				end();
 				break;
 		}
-	}
+	};
 	this.position = function() {
 		return {
 			x: p.x - d.x,
 			y: p.x - d.y			
 		}
-	}
+	};
 	this.element = function() {
 		return element;
 	}
-}
+};

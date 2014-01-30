@@ -1,16 +1,25 @@
-var Controller = Controller || {}
+var Controller = Controller || {};
 
 Controller = function(element, o) {
 	var controls = [];
 
 	function HandleTouch(e) {
 		// if(o.preventdefault)
-		e.preventDefault();
 
-		var controller = e.target;
 		if(e.target == element) return;
-
-		controls[controller.getAttribute('id')].handle(e);
+		if(e.type.indexOf('key') == -1) {
+			e.preventDefault();
+			controls[e.target.getAttribute('id')].handle(e);
+		} else {
+			for(var i in controls) {
+				if(controls[i].element().keyBind == e.keyCode) {
+					e.type = 'mouse' + e.type.substring(3);
+					e.keytarget = controls[i].element();
+					controls[i].handle(e);
+					break;
+				}
+			};
+		}
 	};
 
 	function createGrid(row, column) {
@@ -22,9 +31,9 @@ Controller = function(element, o) {
 			parent = document.createElement('div');
 			parent.id = 'grid-parent';
 			parent.className = 'grid';
-			parent.style.width = (ratioW * column) + 'px';
-			parent.style.height = (ratioH * row) + 'px';
 		}
+		parent.style.height = (ratioH * row) + 'px';
+		parent.style.width = (ratioW * column) + 'px';
 		
 		parent.innerHTML = "";		
 		for (var r = 0; r < row; r++) {
@@ -42,19 +51,21 @@ Controller = function(element, o) {
 			w: Math.floor((window.innerWidth || document.documentElement.offsetWidth) / column),
 			h: Math.floor((window.innerHeight || document.documentElement.offsetHeight) / row)
 		};
-	}
+	};
 
-	var grid = createGrid(20, 30)
-/*
+	var grid = createGrid(o.row || 15, o.column || 10);
+
 	var supportsOrientationChange = "onorientationchange" in window,
 		orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
 	window.addEventListener(orientationEvent, function() {
-		if(window.orientation || screen.width < 350) grid = createGrid(15,10); 
-		else grid = createGrid(15,10);
-		//alert('HOLY ROTATING SCREENS BATMAN:' + window.orientation + " " + screen.width);
+		if(window.orientation || window.innerWidth < 350) grid = createGrid(o.column || 15, o.row || 10);
+		else grid = createGrid(o.row || 15, o.column || 10);
+
+		for(var c in controls) {
+			updateControl(grid, controls[c], window.innerWidth < 350);
+		}
 	}, false);	
-	console.log(grid)*/
 
 	/* Attach Listeners */
 	if(o.supportmouse) {
@@ -62,20 +73,31 @@ Controller = function(element, o) {
 		element.addEventListener("mouseup", HandleTouch);
 		element.addEventListener("mousedown", HandleTouch);
 	}
+	document.body.addEventListener("keydown", HandleTouch);
+	document.body.addEventListener("keyup", HandleTouch);
 	element.addEventListener("touchstart", HandleTouch);
 	element.addEventListener("touchmove", HandleTouch);
 	element.addEventListener("touchend", HandleTouch);
 
+	function updateControl(grid, control, flip) {
+		var c = control.element();
+		c.style.position = 'absolute';
+		c.style.left = grid.w * control.position().left;
+		c.style.top = grid.h * control.position().top;
+		c.style.width = grid.w * control.size().width - 1;
+		c.style.height = grid.h * control.size().height - 1;
+		if(flip) {
+			c.style.left = grid.w * control.position().top;
+			c.style.top = grid.h * control.position().left;
+			//c.style.width = grid.w * control.size().height - 1;
+			//c.style.height = grid.h * control.size().width - 1;
+		}
+		return c;
+	}
+
 	this.add = function(control) {
 		controls[control.element().getAttribute('id')] = control;
 
-		var c = control.element()
-		c.style.position = 'absolute',
-		c.style.left = grid.w * control.position().left,
-		c.style.top = grid.h * control.position().top,
-		c.style.width = grid.w * control.size().width - 1,
-		c.style.height = grid.h * control.size().height - 1
-
-		element.appendChild(c);
-	}
-}
+		element.appendChild(updateControl(grid, control));
+	};
+};
