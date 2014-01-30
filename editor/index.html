@@ -27,7 +27,7 @@ var buttoncontrol{{control.name}} = new Controller.Button({
 text: '{{control.name}}',
 color: '{{control.style['background-color']}}',
 round: {{control.round}},
-key: {{control.key}},
+key: '{{control.key}}',
 position: {top: {{control.grid.top}}, left: {{control.grid.left}}},
 start: function(e) { a.button_{{control.name}}.start && a.button_{{control.name}}.start(e) },
 end: function(e) { a.button_{{control.name}}.end && a.button_{{control.name}}.end(e) }});
