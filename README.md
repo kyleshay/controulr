@@ -3,21 +3,18 @@ Controulr.js
 
 ## Todo list (very much still in development)
 #### Controulr.js todo:
-	- support custom row/column via parameters.
-	- make the buttons look nicer.
 	- support gestures.js
 	- support joystick.js
 	
 #### Editor todo:	
-	- support more than just adding buttons.
+	- support add touchpad.js
 	- support resizing elements
-	- support printing out custom row/column
 
 ## Usage:
 All parameters in each object are optional.
 ```javascript
 var controller = document.getElementById('controller');
-var mycontrol = new Controller(controller, {supportclick: false});
+var mycontrol = new Controller(controller, {row: 10, column: 15, supportmouse: true});
 ```
 
 #### Create a multi-touch controller example:
@@ -42,6 +39,8 @@ mycontrol.add(touchcontrol);
 var buttoncontrolstart = new Controller.Button({
 	text: "start",
 	color: "#3333cc",
+	round: true,
+	key: 'a',
 	position: {top: 6, left: 10},
 	size: {height: 1, width: 2}
 	start: function(e) { /*logic goes here for the 'start' event*/ },
@@ -65,8 +64,8 @@ You may optinally generate the controller using the editor, copy the output in t
 	<title>controller</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" type="text/css" href="http://rawgithub.com/kyleshay/controulr/master/example/style.css">
 
-	<style>.active { box-shadow: inset 1px 1px 1px #222 !important; }</style>
 	<script type="text/javascript" src='http://rawgithub.com/kyleshay/controulr/master/controul.min.js'></script>
 </head>
 <body>
@@ -82,18 +81,12 @@ You may optinally generate the controller using the editor, copy the output in t
 To configure the event handlers for the generated code:
 ```javascript
 var control = new EZController(document.getElementById('controller'), {
-    'start_button': {
-        start: function () {
-            console.log('start_button_start')
-        },
-        end: function () {
-            console.log('start_button_end')
-        },
-        move: function () {
-            console.log('start_button_move')
-        },
+    'select': {
+        start: function () { console.log('select_start') },
+        end: function () { console.log('select_end') },
+        move: function () { console.log('select_move') },
     },
 }, {
-    supportmouse: true
+	row: 10, column: 15, supportmouse: true
 });
 ```

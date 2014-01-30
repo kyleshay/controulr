@@ -3,7 +3,6 @@
 	<title>controller</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<script type="text/javascript" src='../src/controls.js'></script>
@@ -13,7 +12,7 @@
     <div id="controller"></div>
     <script type="text/javascript" >
 var EZController = EZController || {}; EZController = function(element, a, o) {
-var buttoncontrolselect = new Controller.Button({ text: 'select', color: 'red', round: true, position: {top: 1, left: 3}, start: function(e) { a.button_select.start && a.button_select.start(e) }, end: function(e) { a.button_select.end && a.button_select.end(e) }});
+var buttoncontrolselect = new Controller.Button({ text: 'select', color: 'red', round: true, key: 'a', position: {top: 1, left: 3}, start: function(e) { a.button_select.start && a.button_select.start(e) }, end: function(e) { a.button_select.end && a.button_select.end(e) }});
 var control = new Controller(element, o); control.add(buttoncontrolselect); this.control = control;} 
 
 

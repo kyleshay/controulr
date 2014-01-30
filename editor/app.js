@@ -94,6 +94,7 @@ function AppCtrl($scope) {
 		$scope.editText = buttonToEdit.innerText;
 		$scope.editColor = buttonToEdit.style.backgroundColor;
 		$scope.editRound = buttonToEdit.round;
+		$scope.editKey = buttonToEdit.key;
 		$scope.$apply();
 	}
 
@@ -102,6 +103,7 @@ function AppCtrl($scope) {
 		buttonToEdit.innerText = $scope.editText;
 		buttonToEdit.style.backgroundColor = $scope.editColor;
 		buttonToEdit.round = $scope.editRound;
+		buttonToEdit.key = $scope.editKey;
 		buttonToEdit.name = $scope.editText.replace(' ', '_');
 
 		$scope.editText = $scope.editColor = buttonToEdit = null;
@@ -137,6 +139,7 @@ function AppCtrl($scope) {
 	$scope.updateGrid();
 	$scope.print = false;
 	$scope.editBox = false;
+	$scope.editKey = '';
 	$scope.editText = '';
 	$scope.editColor = '';
 	$scope.editRound = false;
