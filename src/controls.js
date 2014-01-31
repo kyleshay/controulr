@@ -84,8 +84,10 @@ Controller = function(element, o) {
 		c.style.position = 'absolute';
 		c.style.left = grid.w * control.position().left;
 		c.style.top = grid.h * control.position().top;
-		c.style.width = grid.w * control.size().width - 1;
-		c.style.height = grid.h * control.size().height - 1;
+		c.style.width = grid.w * control.size().width - 3;
+		c.style.height = grid.h * control.size().height - 3;
+		c.style.lineHeight = grid.h + 'px';
+		c.style.fontSize = Math.min(grid.h/2, grid.w/2) + 'px';
 		if(flip) {
 			c.style.left = grid.w * control.position().top;
 			c.style.top = grid.h * control.position().left;

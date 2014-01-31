@@ -14,11 +14,9 @@ body {
 	text-align:center;
 	font-weight:bold;
 	
-	text-shadow: /* Simulating Text Stroke */
-        -1px -1px 0 #000, 
-        1px -1px 0 #000, 
-        -1px 1px 0 #000, 
-        1px 1px 0 #000;
+	text-shadow: 
+        -1px -1px 0 #000,
+        1px 2px 14px #000;
 
     border-top: 1px solid rgba(0,0,0,0.5);
     border-left: 1px solid rgba(0,0,0,0.5);
