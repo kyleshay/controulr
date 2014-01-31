@@ -6,12 +6,13 @@ Automatically reformats the size based on a grid for any device, fixes itself on
 
 ## Todo list (very much still in development)
 #### Controulr.js todo:
-	- support gestures.js
 	- support joystick.js
 	
 #### Editor todo:	
-	- support touchpad.js
+	- support add a touchpad
+	- support add a gesture
 	- support resizing elements
+	- better UI
 
 ## Usage:
 All parameters in each object are optional.
@@ -20,20 +21,39 @@ var controller = document.getElementById('controller');
 var mycontrol = new Controller(controller, {row: 10, column: 15, supportmouse: true});
 ```
 
-#### Create a multi-touch controller example:
+#### Create a touchpad controller example:
 ```javascript
 /** Setup Multi-Touch Controller  **/
 var touchcontrol = new Controller.Touchpad({
 	style: "color:red;border:1px solid black;",
 	position: {top: 2, left: 1},
 	size: {width: 3, height: 5},
-	start: function() { /*logic goes here for the 'start' event*/ },
-	end: function() { /*logic goes here for the 'end' event*/ },
-	move: function() { /*logic goes here for the 'move' event*/ }
+	start: function(e) { /*logic goes here for the 'start' event*/ },
+	end: function(e) { /*logic goes here for the 'end' event*/ },
+	move: function(e) { /*logic goes here for the 'move' event*/ }
 });
 
 // and add it to the controller
 mycontrol.add(touchcontrol);
+```
+
+#### Create a gesture/swipe controller example:
+```javascript
+/** Setup Multi-Touch Controller  **/
+var gesture = new Controller.Gesture({
+	style: "color:red;border:1px solid black;",
+	position: {top: 2, left: 1},
+	size: {width: 3, height: 5},
+	end: function(e, dir) { 
+		/*
+			logic goes here for the 'end' event
+			dir contains a string of the direction that was swiped:
+				up/down/left/right
+		*/ }
+});
+
+// and add it to the controller
+mycontrol.add(gesture);
 ```
 
 #### Create a button controller example:

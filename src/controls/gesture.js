@@ -2,49 +2,52 @@ var Controller = Controller || {};
 
 Controller.Gesture = function(o) {
 
-	var element, start, end, move;
+	var element, size, position, end;
 
-	if(o.start) start = o.start;
 	if(o.end) end = o.end;
-	if(o.move) move = o.move;	
-
+	
+	position = o.position || {top: 0, left: 0};
+	size = o.size || {width: 2, height: 2};
+	
 	element = document.createElement('div');
 	element.id = "gesture";
-	if(o.style) element.style = o.style;
+	if(o.style) element.style.cssText = o.style;
 
-	var s = d = p = {
-		x: 0, y: 0
-	};
-
+	var s = { x: 0, y: 0 };
+	var t = Date.now();
 	this.handle = function(e) {
 		switch(e.type) {
 			case 'touchstart':
-				d = { x: 0, y: 0 };
 				s = {
 					x: e.changedTouches[0].clientX,
 					y: e.changedTouches[0].clientY
 				};
-				start();
+				t = Date.now()
 				break;
-			case 'touchmove':
-				d.x = s.x - e.changedTouches[0].clientX;
-				d.y = s.y - e.changedTouches[0].clientY;				
-				move();
+			case 'touchend':
+				var x = s.x - e.changedTouches[0].clientX,
+					y = s.y - e.changedTouches[0].clientY;
+				var dir = ''; 
+				var dt =  (t - Date.now());
+
+				if(Math.abs(x/dt) > .03 || Math.abs(y/dt) > .03) {
+					if(Math.abs(x) >= Math.abs(y)) {
+						dir = x > 0 ? "left" : "right";
+					} else {
+						dir = y > 0 ? "up" : "down";
+					}
+				}
+				end(e, dir);
 				break;
-			case 'touchend': 
-				p.x -= d.x;
-				p.y -= d.x;
-				end();
-				break;
-		}
-	};
-	this.position = function() {
-		return {
-			x: p.x - d.x,
-			y: p.x - d.y			
 		}
 	};
 	this.element = function() {
 		return element;
+	}
+	this.position = function() {
+		return position;
+	};
+	this.size = function() {
+		return size;
 	}
 };
