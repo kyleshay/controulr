@@ -18,18 +18,19 @@ Controller.Gesture = function(o) {
 	var dir = ''; 
 	this.handle = function(e) {
 		switch(e.type) {
+			case 'mousedown':
 			case 'touchstart':
 				s = {
-					x: e.changedTouches[0].clientX,
-					y: e.changedTouches[0].clientY
+					x: e.x || e.changedTouches[0].clientX,
+					y: e.y || e.changedTouches[0].clientY
 				};
-				t = Date.now()
+				t = Date.now();
 				break;
+			case 'mouseup':
 			case 'touchend':
-				var x = s.x - e.changedTouches[0].clientX,
-					y = s.y - e.changedTouches[0].clientY;
+				var x = s.x - (e.x || e.changedTouches[0].clientX),
+					y = s.y - (e.y || e.changedTouches[0].clientY);
 				var dt =  (t - Date.now());
-
 				if(Math.abs(x/dt) > .03 || Math.abs(y/dt) > .03) {
 					if(Math.abs(x) >= Math.abs(y)) {
 						dir = x > 0 ? "left" : "right";
