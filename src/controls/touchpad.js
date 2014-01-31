@@ -30,8 +30,8 @@ Controller.Touchpad = function(o) {
 				break;
 			case 'mousemove':
 			case 'touchmove':
-				d.x = s.x - e.x || e.changedTouches[0].clientX;
-				d.y = s.y - e.y || e.changedTouches[0].clientY;				
+				d.x = s.x - (e.x || e.changedTouches[0].clientX);
+				d.y = s.y - (e.y || e.changedTouches[0].clientY);				
 				move();
 				break;
 			case 'mouseup':

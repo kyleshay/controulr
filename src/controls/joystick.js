@@ -16,15 +16,17 @@ Controller.Joystick = function(o) {
 	var dir = '';
 	this.handle = function(e) {
 		switch(e.type) {
+			case 'mousedown':
 			case 'touchstart':
 				s = {
-					x: e.changedTouches[0].clientX,
-					y: e.changedTouches[0].clientY
+					x: e.x || e.changedTouches[0].clientX,
+					y: e.y || e.changedTouches[0].clientY
 				};
 				break;
+			case 'mousemove':
 			case 'touchmove':
-				var x = s.x - e.changedTouches[0].clientX,
-					y = s.y - e.changedTouches[0].clientY;
+				var x = s.x - (e.x || e.changedTouches[0].clientX),
+					y = s.y - (e.y || e.changedTouches[0].clientY);
 
 				if(Math.abs(x) >= Math.abs(y)) {
 					dir = x > 0 ? "left" : "right";
@@ -35,6 +37,7 @@ Controller.Joystick = function(o) {
 				// only call move if it is a new direction?	
 				move(e, dir);
 				break;
+			case 'mouseup':
 			case 'touchend':
 				// reset stuff back to neutral postion?
 				break;
