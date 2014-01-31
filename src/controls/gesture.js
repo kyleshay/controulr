@@ -31,6 +31,7 @@ Controller.Gesture = function(o) {
 				var x = s.x - (e.x || e.changedTouches[0].clientX),
 					y = s.y - (e.y || e.changedTouches[0].clientY);
 				var dt =  (t - Date.now());
+
 				if(Math.abs(x/dt) > .03 || Math.abs(y/dt) > .03) {
 					if(Math.abs(x) >= Math.abs(y)) {
 						dir = x > 0 ? "left" : "right";
@@ -38,6 +39,8 @@ Controller.Gesture = function(o) {
 						dir = y > 0 ? "up" : "down";
 					}
 				}
+				if(element.direction == dir) return;
+				element.direction = dir;
 				end(e, dir);
 				break;
 		}
