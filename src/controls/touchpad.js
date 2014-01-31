@@ -15,9 +15,7 @@ Controller.Touchpad = function(o) {
 	element.id = "touchpad";
 	if(o.style) element.style.cssText = o.style;
 
-	var s = d = p = {
-		x: 0, y: 0
-	};
+	var s = d = p = { x: 0, y: 0 };
 	
 	this.handle = function(e) {
 		switch(e.type) {
