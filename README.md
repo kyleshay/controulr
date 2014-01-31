@@ -1,13 +1,16 @@
 Controulr.js
 =========
 
+Cross browser (ie8+) and platform (mobile, etc) support for buttons, joysticks, touchpads, gestures, keypresses, etc.
+Automatically reformats the size based on a grid for any device, fixes itself on device rotation.
+
 ## Todo list (very much still in development)
 #### Controulr.js todo:
 	- support gestures.js
 	- support joystick.js
 	
 #### Editor todo:	
-	- support add touchpad.js
+	- support touchpad.js
 	- support resizing elements
 
 ## Usage:
