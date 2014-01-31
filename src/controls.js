@@ -4,12 +4,23 @@ Controller = function(element, o) {
 	var controls = [];
 
 	function HandleTouch(e) {
-		// if(o.preventdefault)
-
-		if(e.target == element) return;
+		if(!Controller.mousedown && e.target == document.body) return;
 		if(e.type.indexOf('key') == -1) {
 			e.preventDefault();
-			controls[e.target.getAttribute('id')].handle(e);
+
+			// handle mouse stuff
+			switch(e.type) {
+				case 'mousedown':
+					Controller.mousedown = e.target;
+					break;
+				case 'mouseup':
+					e.targ = Controller.mousedown;
+					Controller.mousedown = null;
+					break;
+			}
+
+			var c = e.targ && e.targ.getAttribute('id') || e.target.getAttribute('id');
+			if(c) controls[c].handle(e);
 		} else {
 			for(var i in controls) {
 				if(controls[i].element().keyBind == e.keyCode) {
@@ -38,7 +49,6 @@ Controller = function(element, o) {
 		parent.innerHTML = "";		
 		for (var r = 0; r < row; r++) {
 		    for (var c = 0; c < column; c++) {
-		    	//g[r+','+c] = {top: ratioH * r, left: ratioW * c};
 		    	parent.innerHTML += 
 		    		"<div style='" +
 		    			"width:" + (ratioW - 1) + "px;" +
@@ -69,15 +79,15 @@ Controller = function(element, o) {
 
 	/* Attach Listeners */
 	if(o.supportmouse) {
-		element.addEventListener("mousemove", HandleTouch);
-		element.addEventListener("mouseup", HandleTouch);
-		element.addEventListener("mousedown", HandleTouch);
+		document.body.addEventListener("mousemove", HandleTouch);
+		document.body.addEventListener("mouseup", HandleTouch);
+		document.body.addEventListener("mousedown", HandleTouch);
 	}
 	document.body.addEventListener("keydown", HandleTouch);
 	document.body.addEventListener("keyup", HandleTouch);
-	element.addEventListener("touchstart", HandleTouch);
-	element.addEventListener("touchmove", HandleTouch);
-	element.addEventListener("touchend", HandleTouch);
+	document.body.addEventListener("touchstart", HandleTouch);
+	document.body.addEventListener("touchmove", HandleTouch);
+	document.body.addEventListener("touchend", HandleTouch);
 
 	function updateControl(grid, control, flip) {
 		var c = control.element();
@@ -91,8 +101,6 @@ Controller = function(element, o) {
 		if(flip) {
 			c.style.left = grid.w * control.position().top;
 			c.style.top = grid.h * control.position().left;
-			//c.style.width = grid.w * control.size().height - 1;
-			//c.style.height = grid.h * control.size().width - 1;
 		}
 		return c;
 	}

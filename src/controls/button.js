@@ -20,17 +20,17 @@ Controller.Button = function(o) {
 	element.keyBind = (o.key || 'a').toUpperCase().charCodeAt(0);
 
 	this.handle = function(e) {
-		var target = e.keytarget || e.target;
+		var target = e.targ || e.keytarget || e.target;
 		switch(e.type) {
-			case 'keydown':
 			case 'mousedown':
+			case 'keydown':
 			case 'touchstart':
 				if(target.className.indexOf('active') == -1) 
 					target.className += ' active';
 				start(e);
 				break;
-			case 'keyup':
 			case 'mouseup':
+			case 'keyup':
 			case 'touchend':
 				target.className = target.className.replace(' active', '');
 				end(e);

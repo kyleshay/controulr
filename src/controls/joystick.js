@@ -25,6 +25,8 @@ Controller.Joystick = function(o) {
 				break;
 			case 'mousemove':
 			case 'touchmove':
+				if(s.x <= 0 && s.y <= 0) return;
+
 				var x = s.x - (e.x || e.changedTouches[0].clientX),
 					y = s.y - (e.y || e.changedTouches[0].clientY);
 
@@ -34,7 +36,8 @@ Controller.Joystick = function(o) {
 					dir = y > 0 ? "up" : "down";
 				}
 
-				// only call move if it is a new direction?	
+				//if(element.dir == dir) return;
+				//element.dir = dir;
 				move(e, dir);
 				break;
 			case 'mouseup':
