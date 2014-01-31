@@ -15,6 +15,7 @@ Controller.Gesture = function(o) {
 
 	var s = { x: 0, y: 0 };
 	var t = Date.now();
+	var dir = ''; 
 	this.handle = function(e) {
 		switch(e.type) {
 			case 'touchstart':
@@ -27,7 +28,6 @@ Controller.Gesture = function(o) {
 			case 'touchend':
 				var x = s.x - e.changedTouches[0].clientX,
 					y = s.y - e.changedTouches[0].clientY;
-				var dir = ''; 
 				var dt =  (t - Date.now());
 
 				if(Math.abs(x/dt) > .03 || Math.abs(y/dt) > .03) {
@@ -43,7 +43,7 @@ Controller.Gesture = function(o) {
 	};
 	this.element = function() {
 		return element;
-	}
+	};
 	this.position = function() {
 		return position;
 	};

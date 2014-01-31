@@ -6,7 +6,7 @@ Automatically reformats the size based on a grid for any device, fixes itself on
 
 ## Todo list (very much still in development)
 #### Controulr.js todo:
-	- support joystick.js
+	- create UI for joystick
 	
 #### Editor todo:	
 	- support add a touchpad

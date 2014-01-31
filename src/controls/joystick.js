@@ -1,47 +1,52 @@
 var Controller = Controller || {};
 
 Controller.Joystick = function(o) {
+	var element, size, position, move;
 
-	var element, start, end, move;
-
-	if(o.start) start = o.start;
-	if(o.end) end = o.end;
 	if(o.move) move = o.move;
-
+	
+	position = o.position || {top: 0, left: 0};
+	size = o.size || {width: 2, height: 2};
+	
 	element = document.createElement('div');
 	element.id = "joystick";
-	if(o.style) element.style = o.style;
+	if(o.style) element.style.cssText = o.style;
 
-	var s = d = p = {
-		x: 0, y: 0
-	};
-
+	var s = { x: 0, y: 0 };
+	var dir = '';
 	this.handle = function(e) {
 		switch(e.type) {
 			case 'touchstart':
-				d = { x: 0, y: 0 };
 				s = {
 					x: e.changedTouches[0].clientX,
 					y: e.changedTouches[0].clientY
 				};
-				start();
 				break;
 			case 'touchmove':
-				d.x = s.x - e.changedTouches[0].clientX;
-				d.y = s.y - e.changedTouches[0].clientY;				
-				move();
+				var x = s.x - e.changedTouches[0].clientX,
+					y = s.y - e.changedTouches[0].clientY;
+
+				if(Math.abs(x) >= Math.abs(y)) {
+					dir = x > 0 ? "left" : "right";
+				} else {
+					dir = y > 0 ? "up" : "down";
+				}
+
+				// only call move if it is a new direction?	
+				move(e, dir);
 				break;
-			case 'touchend': 
-				p.x -= d.x;
-				p.y -= d.x;
-				end();
+			case 'touchend':
+				// reset stuff back to neutral postion?
 				break;
 		}
 	};
-	this.direction = function() {
-		return 'up';
-	};
 	this.element = function() {
 		return element;
+	};
+	this.position = function() {
+		return position;
+	};
+	this.size = function() {
+		return size;
 	}
 };
