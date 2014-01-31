@@ -7,23 +7,25 @@
 
 	<script type="text/javascript" src='../src/controls.js'></script>
 	<script type="text/javascript" src='../src/controls/gesture.js'></script>
+	<script type="text/javascript" src='../src/controls/joystick.js'></script>
 	<script type="text/javascript" src='../src/controls/button.js'></script>
 </head>
 <body>
     <div id="controller"></div>
     <script type="text/javascript" >
 var EZController = EZController || {}; EZController = function(element, a, o) {
-var gesture = new Controller.Gesture({ style: "border: 1px solid red", position: {top: 3, left: 2}, size: {width: 3, height: 3}, end: function(e, dir) { a.gesture.end && a.gesture.end(e, dir) }});
+var gesture = new Controller.Gesture({ style: "border: 1px solid red", position: {top: 3, left: 3}, size: {width: 3, height: 3}, end: function(e, dir) { a.gesture.end && a.gesture.end(e, dir) }});
+var joystick = new Controller.Joystick({ style: "border: 1px solid red", position: {top: 3, left: 0}, size: {width: 3, height: 3}, move: function(e, dir) { a.joystick.move && a.joystick.move(e, dir) }});
 var buttoncontrolA = new Controller.Button({ text: 'A', color: 'green', round: false, key: 'A', position: {top: 5, left: 11}, start: function(e) { a.button_A.start && a.button_A.start(e) }, end: function(e) { a.button_A.end && a.button_A.end(e) }});
 var buttoncontrolB = new Controller.Button({ text: 'B', color: 'red', round: false, key: 'B', position: {top: 4, left: 12}, start: function(e) { a.button_B.start && a.button_B.start(e) }, end: function(e) { a.button_B.end && a.button_B.end(e) }});
 var buttoncontrolY = new Controller.Button({ text: 'Y', color: 'yellow', round: false, key: 'Y', position: {top: 3, left: 11}, start: function(e) { a.button_Y.start && a.button_Y.start(e) }, end: function(e) { a.button_Y.end && a.button_Y.end(e) }});
 var buttoncontrolX = new Controller.Button({ text: 'X', color: 'blue', round: false, key: 'X', position: {top: 4, left: 10}, start: function(e) { a.button_X.start && a.button_X.start(e) }, end: function(e) { a.button_X.end && a.button_X.end(e) }});
-var buttoncontrolselect = new Controller.Button({ text: 'select', color: 'grey', round: true, key: '', position: {top: 5, left: 6}, size: {width: 2, height: 1}, start: function(e) { a.button_select.start && a.button_select.start(e) }, end: function(e) { a.button_select.end && a.button_select.end(e) }});
+var buttoncontrolselect = new Controller.Button({ text: 'select', color: 'grey', round: true, key: '', position: {top: 5, left: 7}, size: {width: 2, height: 1}, start: function(e) { a.button_select.start && a.button_select.start(e) }, end: function(e) { a.button_select.end && a.button_select.end(e) }});
 
-var control = new Controller(element, o); control.add(gesture); control.add(buttoncontrolY); control.add(buttoncontrolX); control.add(buttoncontrolA); control.add(buttoncontrolB); control.add(buttoncontrolselect); this.control = control;} 
+var control = new Controller(element, o); control.add(joystick); control.add(gesture); control.add(buttoncontrolY); control.add(buttoncontrolX); control.add(buttoncontrolA); control.add(buttoncontrolB); control.add(buttoncontrolselect); this.control = control;} 
 
 
-var control = new EZController(document.getElementById('controller'), { 'gesture': { end: function(e, dir) { console.log('swipe-' + dir) } }, 'button_A': { start: function() { console.log('A_start') }, end: function() { console.log('A_end') }, move: function() { console.log('A_move') }, }, 'button_B': { start: function() { console.log('B_start') }, end: function() { console.log('B_end') }, move: function() { console.log('B_move') }, }, 'button_Y': { start: function() { console.log('Y_start') }, end: function() { console.log('Y_end') }, move: function() { console.log('Y_move') }, }, 'button_X': { start: function() { console.log('X_start') }, end: function() { console.log('X_end') }, move: function() { console.log('X_move') }, }, 'button_select': { start: function() { console.log('select_start') }, end: function() { console.log('select_end') }, move: function() { console.log('select_move') }, }, }, {row: 10, column: 15, supportmouse: true});
+var control = new EZController(document.getElementById('controller'), { 'gesture': { end: function(e, dir) { console.log('swipe-' + dir) } }, 'joystick': { move: function(e, dir) { console.log('move-' + dir) } }, 'button_A': { start: function() { console.log('A_start') }, end: function() { console.log('A_end') }, move: function() { console.log('A_move') }, }, 'button_B': { start: function() { console.log('B_start') }, end: function() { console.log('B_end') }, move: function() { console.log('B_move') }, }, 'button_Y': { start: function() { console.log('Y_start') }, end: function() { console.log('Y_end') }, move: function() { console.log('Y_move') }, }, 'button_X': { start: function() { console.log('X_start') }, end: function() { console.log('X_end') }, move: function() { console.log('X_move') }, }, 'button_select': { start: function() { console.log('select_start') }, end: function() { console.log('select_end') }, move: function() { console.log('select_move') }, }, }, {row: 10, column: 15, supportmouse: true});
 	</script>
 </body>
 </html>
